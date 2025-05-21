@@ -26,6 +26,10 @@ Este proyecto forma parte del examen práctico de la Unidad II. A continuación,
 
 ## 📷 Capturas de Pantalla
 
+### Credenciales
+- admin@admin.com
+- 123456
+
 ### 1. Funcionalidad: Gestión de Empleados
 ![Captura 1](images/imagen_principal.png)
 

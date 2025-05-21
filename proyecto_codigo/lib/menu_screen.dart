@@ -20,98 +20,92 @@ class MenuScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Header con bienvenida
+              // Header compacto
               Container(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [Colors.indigo[400]!, Colors.indigo[600]!],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.indigo.withOpacity(0.3),
-                      blurRadius: 8,
-                      offset: const Offset(0, 4),
+                      color: Colors.indigo.withOpacity(0.2),
+                      blurRadius: 6,
+                      offset: const Offset(0, 3),
                     ),
                   ],
                 ),
-                child: Column(
+                child: Row(
                   children: [
-                    Icon(Icons.business_center, size: 48, color: Colors.white),
-                    const SizedBox(height: 12),
-                    const Text(
-                      'Sistema de Gestión',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                    Icon(Icons.business_center, size: 32, color: Colors.white),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Sistema de Gestión',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            'Administra tu empresa',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white.withOpacity(0.9),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'Administra tu empresa de manera eficiente',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white.withOpacity(0.9),
-                      ),
-                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 40),
+              const SizedBox(height: 24),
 
               // Opciones del menú
-              Expanded(
-                child: GridView.count(
-                  crossAxisCount: 1,
-                  childAspectRatio: 3.5,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  children: [
-                    _buildMenuCard(
-                      context: context,
-                      icon: Icons.people_outline,
-                      title: 'Gestionar Empleados',
-                      subtitle: 'Administra la información del personal',
-                      color: Colors.blue,
-                      onTap:
-                          () => _navigateToScreen(
-                            context,
-                            const EmployeeListScreen(),
-                          ),
-                    ),
-                    _buildMenuCard(
-                      context: context,
-                      icon: Icons.location_city_outlined,
-                      title: 'Gestionar Sedes',
-                      subtitle: 'Controla las ubicaciones de la empresa',
-                      color: Colors.green,
-                      onTap:
-                          () => _navigateToScreen(
-                            context,
-                            const SedeListScreen(),
-                          ),
-                    ),
-                  ],
-                ),
+              _buildMenuCard(
+                context: context,
+                icon: Icons.people_outline,
+                title: 'Gestionar Empleados',
+                subtitle: 'Administra el personal',
+                color: Colors.blue,
+                onTap:
+                    () =>
+                        _navigateToScreen(context, const EmployeeListScreen()),
               ),
 
-              // Footer con información adicional
+              const SizedBox(height: 16),
+
+              _buildMenuCard(
+                context: context,
+                icon: Icons.location_city_outlined,
+                title: 'Gestionar Sedes',
+                subtitle: 'Controla las ubicaciones',
+                color: Colors.green,
+                onTap: () => _navigateToScreen(context, const SedeListScreen()),
+              ),
+
+              const SizedBox(height: 24),
+
+              // Footer informativo
               Container(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(8),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.1),
@@ -125,9 +119,13 @@ class MenuScreen extends StatelessWidget {
                   children: [
                     Icon(Icons.info_outline, size: 16, color: Colors.grey[600]),
                     const SizedBox(width: 8),
-                    Text(
-                      'Selecciona una opción para comenzar',
-                      style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                    Flexible(
+                      child: Text(
+                        'Selecciona una opción para comenzar',
+                        style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ],
                 ),
@@ -148,18 +146,18 @@ class MenuScreen extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     return Card(
-      elevation: 4,
-      shadowColor: color.withOpacity(0.3),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      elevation: 3,
+      shadowColor: color.withOpacity(0.2),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(12),
         child: Container(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(12),
             gradient: LinearGradient(
-              colors: [Colors.white, color.withOpacity(0.05)],
+              colors: [Colors.white, color.withOpacity(0.03)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -167,36 +165,38 @@ class MenuScreen extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: color.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: Icon(icon, size: 32, color: color),
+                child: Icon(icon, size: 24, color: color),
               ),
               const SizedBox(width: 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       title,
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[800],
                       ),
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 2),
                     Text(
                       subtitle,
-                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                      style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
               ),
-              Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey[400]),
+              Icon(Icons.arrow_forward_ios, size: 14, color: Colors.grey[400]),
             ],
           ),
         ),
