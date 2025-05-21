@@ -27,10 +27,10 @@ Este proyecto forma parte del examen práctico de la Unidad II. A continuación,
 ## 📷 Capturas de Pantalla
 
 ### 1. Funcionalidad: Gestión de Empleados
-![Captura 1](images/imagen1.png)
+![Captura 1](images/imagen_principal.png)
 
 ### 2. Funcionalidad: Gestión de Sedes
-![Captura 2](images/imagen2.png)
+![Captura 2](images/sedes.png)
 
 ---
 
